@@ -12,15 +12,18 @@
     <title>Basic Trivia</title>
   </head>
   <body>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container text-center header-font border">
+        <img src="assets/images/header-logo.jpg" alt="final fantasy logo" id="header-photo"> Trivia (basic)
+        <hr class="my-4">
+        <p>Answer the Final Fantasy series trivia questions below before time is up or you press the "done" button. I will then reveal the answers and give you your score</p>
+      </div>
+    </div>
+
     <main class="container pb-2 pt-2 border mt-3">
-        
-        <h1 class="p-2">Totally Trivial Trivia (basic)</h1>
-
-        <!-- Explanation block-->
-        <p class="p-3">Answer the Final Fantasy Series trivia questions below before time is up or you press the "done" button. I will then reveal the answers and give you your score</p>
-
         <!-- will dynamically add questions here-->
-        <div id="questions" class="pl-3 pr-3"></div>
+        <form id="questions" class="pl-3 pr-3"></form>
 
         <button id="complete">Done</button>
     </main>

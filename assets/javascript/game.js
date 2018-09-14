@@ -38,37 +38,44 @@ var trivia = [
 
 //now let's setup the game
 
-//if we are doing "display all format", dynamically fill page depending on question count (or passed trivia file)
-for(var i=0; i< trivia.length; i++) {
-    $("#questions").append('<div class="row col-12 pb-2 question-formatting border mb-2 mt-2"> ' +trivia[i].question + '</div>');
-    $("#questions").append('<div class="row question'+(i+1)+'"> </div>');
-    //$("#questions").append('<br/>');
+//if we are doing "display all format", dynamically fill page depending on question count (or passed trivia file). This is fully dynamic!!!
+    
+    for(var i=0; i< trivia.length; i++) {
 
-    //answer1
-    $("#questions").find('.question'+(i+1)).append('<div class="col-3 div-question'+(i+1)+'-answer1">');    //generate div of size col-3
-    $("#questions").find('.div-question'+(i+1)+'-answer1').append('<label for="answer1">'+trivia[i].answer1+'</label>');    //create label for radial input
-    $("#questions").find('.div-question'+(i+1)+'-answer1').append('<input type="radio" id="answer1" name="answer1" value="1" />'); //create radial inoput attached to col-3 div
+        $("#questions").append('<div class="row col-12 pb-2 question-formatting border mb-2 mt-2"> ' +trivia[i].question + '</div>');   //add row with question content
+        $("#questions").append('<div class="row question'+(i+1)+'"> </div>'); //create row for answers to be placed into
 
-    //answer2
-    $("#questions").find('.question'+(i+1)).append('<div class="col-3 div-question'+(i+1)+'-answer2">');    
-    $(".question"+(i+1)).find('.div-question'+(i+1)+'-answer2').append('<label for="answer2">'+trivia[i].answer2+'</label>');
-    $(".question"+(i+1)).find('.div-question'+(i+1)+'-answer2').append('<input type="radio" id="answer2" name="answer2" value="2" />');
+        //answer1
+        $("#questions").find('.question'+(i+1)).append('<div class="col-3 div-question'+(i+1)+'-answer1">');    //generate div of size col-3
+        $("#questions").find('.div-question'+(i+1)+'-answer1').append('<label for="a1q'+i+'">'+trivia[i].answer1+'</label>');    //create label for radial input
+        $("#questions").find('.div-question'+(i+1)+'-answer1').append('<input type="radio" name="a1q'+i+'" value="1" />'); //create radial inoput attached to col-3 div
 
-    //answer3
-    $("#questions").find('.question'+(i+1)).append('<div class="col-3 div-question'+(i+1)+'-answer3">');
-    $("#questions").find('.div-question'+(i+1)+'-answer3').append('<label for="answer3">'+trivia[i].answer3+'</label>');
-    $("#questions").find('.div-question'+(i+1)+'-answer3').append('<input type="radio" id="answer3" name="answer3" value="3" />');
+        //answer2
+        $("#questions").find('.question'+(i+1)).append('<div class="col-3 div-question'+(i+1)+'-answer2">');    
+        $(".question"+(i+1)).find('.div-question'+(i+1)+'-answer2').append('<label for="a2q'+i+'">'+trivia[i].answer2+'</label>');
+        $(".question"+(i+1)).find('.div-question'+(i+1)+'-answer2').append('<input type="radio" name="a2q'+i+'" value="2" />');
 
-    //answer4
-    $("#questions").find('.question'+(i+1)).append('<div class="col-3 div-question'+(i+1)+'-answer4">');
-    $("#questions").find('.div-question'+(i+1)+'-answer4').append('<label for="answer4">'+trivia[i].answer4+'</label>');
-    $("#questions").find('.div-question'+(i+1)+'-answer4').append('<input type="radio" id="answer4" name="answer4" value="4" />');
- 
+        //answer3
+        $("#questions").find('.question'+(i+1)).append('<div class="col-3 div-question'+(i+1)+'-answer3">');
+        $("#questions").find('.div-question'+(i+1)+'-answer3').append('<label for="a3q'+i+'">'+trivia[i].answer3+'</label>');
+        $("#questions").find('.div-question'+(i+1)+'-answer3').append('<input type="radio" name="id="a3q'+i+'" value="3" />');
 
-}
+        //answer4
+        $("#questions").find('.question'+(i+1)).append('<div class="col-3 div-question'+(i+1)+'-answer4">');
+        $("#questions").find('.div-question'+(i+1)+'-answer4').append('<label for="a4q'+i+'">'+trivia[i].answer4+'</label>');
+        $("#questions").find('.div-question'+(i+1)+'-answer4').append('<input type="radio" name="a4q'+i+'" value="4" />');
 
-//evaluate user's answers
-// for(var i=0;i<trivia.length;i++)
-// {
-//     if()
-// }
+    }
+
+//when user clicks submit
+    var formData = new FormData(document.querySelector('form'))
+    console.log(formData);
+    //evaluate user's answers
+    // for(var i=0;i<trivia.length;i++)
+    // {
+    //     if(trivia[i].question.rightanswer === ) //does user entry for this question match answer?
+    //         correct++;
+    //     else
+    //         incorrect++;
+    // }
+    //now append number correct or incorrect to page
