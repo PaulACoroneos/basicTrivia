@@ -12,11 +12,8 @@
 // {
 //     $("<div class='row'></div>").appendTo("#questions");
 // }
+var seconds =300;   //give user 5 mins
 $( document ).ready(function() {
-
-    //start the timer
-    $(".game-display").text("Time remaining: ");
-    setTimeout(triviaGame, 3000)
 
     function triviaGame() {
         //define global vars for game
@@ -72,13 +69,8 @@ $( document ).ready(function() {
             $("#questions").find('.div-question'+(i+1)+'-answer4').append('<input type="radio" name="q'+i+'" value="4" />');
 
         }
-
-    $("form").submit(function(){
-        if(timeoutID != 0)  //if timer isn't done
-            finish_game();
-    });
-    if(timeoutID === 0) //if timer runs out before button pressed
-        finish_game();
+        
+    }
 
     function finish_game() {
         
@@ -95,4 +87,23 @@ $( document ).ready(function() {
         console.log(correct);
         console.log(incorrect);
     }
+
+    function timer() {
+        seconds--;
+        console.log(seconds);
+        $(".game-display").text("Time remaining: "+seconds + " seconds");
+    }   
+    triviaGame();
+
+    //run timer and if out of time grade quiz (300 seconds)
+    setTimeout(finish_game, 300*(1000));
+
+    $("form").submit(function(){
+        if(seconds != 0)  //if timer isn't done
+            finish_game();
+    });
+
+    //game loop
+    setInterval(timer,1000);
+
 });
